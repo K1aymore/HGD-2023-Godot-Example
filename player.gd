@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 const SPEED = 90;
 
@@ -31,7 +32,7 @@ func _process(delta: float) -> void:
 	if is_on_floor():
 		velocity.y = 1
 	else:
-		velocity.y += 7
+		velocity.y += 420 * delta
 	
 	if Input.is_action_just_pressed("ui_up") && is_on_floor():
 		velocity.y = -200
