@@ -13,10 +13,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		velocity.x = -SPEED
 		$AnimatedSprite2D.flip_h = false
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("right"):
 		velocity.x = SPEED
 		$AnimatedSprite2D.flip_h = true
 	else:
@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 	else:
 		velocity.y += 420 * delta
 	
-	if Input.is_action_just_pressed("ui_up") && is_on_floor():
+	if Input.is_action_just_pressed("jump") && is_on_floor():
 		velocity.y = -200
 	
 	move_and_slide()
