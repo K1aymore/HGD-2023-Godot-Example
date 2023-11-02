@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkqw0tlg176n8"]
+
+[ext_resource type="PackedScene" uid="uid://bk023c25xypnx" path="res://player.tscn" id="1_yh800"]
+[ext_resource type="PackedScene" uid="uid://dtn6648xy78qr" path="res://block.tscn" id="2_sofrm"]
+[ext_resource type="PackedScene" uid="uid://cg6j05xrmmakd" path="res://treat.tscn" id="3_7rshi"]
+[ext_resource type="Script" path="res://Treat Counter.gd" id="4_iluq7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v66tp"]
+font_size = 14
+
+[node name="World" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -5
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.168627, 0.219608, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_yh800")]
+position = Vector2(121, 91)
+
+[node name="Block" parent="." instance=ExtResource("2_sofrm")]
+position = Vector2(118, 128)
+scale = Vector2(1.51946, 0.452363)
+
+[node name="Block2" parent="." instance=ExtResource("2_sofrm")]
+position = Vector2(23, 90)
+scale = Vector2(1.3761, 0.292363)
+
+[node name="Block3" parent="." instance=ExtResource("2_sofrm")]
+position = Vector2(227, 100)
+scale = Vector2(1.51946, 0.452363)
+
+[node name="Block4" parent="." instance=ExtResource("2_sofrm")]
+position = Vector2(-41, 50)
+scale = Vector2(1.51946, 0.452363)
+
+[node name="Treat" parent="." instance=ExtResource("3_7rshi")]
+position = Vector2(48, 69)
+
+[node name="Treat2" parent="." instance=ExtResource("3_7rshi")]
+position = Vector2(257, 71)
+
+[node name="Treat3" parent="." instance=ExtResource("3_7rshi")]
+position = Vector2(192, 73)
+
+[node name="Treat4" parent="." instance=ExtResource("3_7rshi")]
+position = Vector2(-17, 23)
+
+[node name="Treat5" parent="." instance=ExtResource("3_7rshi")]
+position = Vector2(-60, 26)
+
+[node name="CounterLayer" type="CanvasLayer" parent="."]
+
+[node name="TreatCounter" type="Label" parent="CounterLayer"]
+offset_left = 14.0
+offset_top = 13.0
+offset_right = 81.0
+offset_bottom = 39.0
+text = "Treats: 0"
+label_settings = SubResource("LabelSettings_v66tp")
+script = ExtResource("4_iluq7")
+
+[connection signal="ateTreat" from="Player" to="CounterLayer/TreatCounter" method="_on_player_ate_treat"]
