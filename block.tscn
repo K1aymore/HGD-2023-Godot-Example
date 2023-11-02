@@ -4,11 +4,13 @@
 size = Vector2(64, 64)
 
 [sub_resource type="Gradient" id="Gradient_w8ln3"]
-offsets = PackedFloat32Array(0.567742)
-colors = PackedColorArray(0.38864, 0.2744, 0.56, 1)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.232258)
+colors = PackedColorArray(0.2166, 0.38, 0.246557, 1, 0.29, 0.181637, 0.1189, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ydeuu"]
 gradient = SubResource("Gradient_w8ln3")
+fill_to = Vector2(0, 1)
 
 [node name="Block" type="StaticBody2D"]
 
